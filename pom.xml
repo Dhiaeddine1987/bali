@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>be.abvvfgtb.bali</groupId>
+	<artifactId>00-Bali</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>14</java.version>
+		<janus.root>${basedir}</janus.root>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+		<repository>
+			<id>abvv-nexus</id>
+			<name>ABVV Nexus</name>
+			<url>http://dev-platform.fed.diva.net/nexus/repository/abvv-fgtb/</url>
+		</repository>
+	</repositories>
+
+    <packaging>pom</packaging>
+
+	<modules>
+		<module>bali-member-facade-server</module>
+	</modules>
+</project>
+<!--    <modules>-->
+<!--        <module>bali-member-facade-server</module>-->
+<!--    </modules>-->
+<!--    <parent>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
+<!--		<version>2.7.3</version>-->
+<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+<!--	</parent>-->
+<!--	<groupId>com.example</groupId>-->
+<!--	<artifactId>demo</artifactId>-->
+<!--	<version>0.0.1-SNAPSHOT</version>-->
+<!--	<name>demo</name>-->
+<!--	<description>Demo project for Spring Boot</description>-->
+<!--	<properties>-->
+<!--		<java.version>11</java.version>-->
+<!--	</properties>-->
