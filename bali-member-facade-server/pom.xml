@@ -34,10 +34,6 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-resource-server</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -75,22 +71,28 @@
             <artifactId>validation-api</artifactId>
             <version>2.0.1.Final</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.swagger</groupId>-->
-<!--            <artifactId>swagger-annotations</artifactId>-->
-<!--            <version>1.5.20</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.springfox</groupId>-->
-<!--            <artifactId>springfox-boot-starter</artifactId>-->
-<!--            <version>3.0.0</version>-->
-<!--        </dependency>-->
+        <!-- annotations for DTo's-->
         <dependency>
-            <groupId>io.swagger.core.v3</groupId>
+            <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>${swagger-core-version}</version>
+            <version>1.5.20</version>
+            <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>io.springfox</groupId>-->
+        <!--            <artifactId>springfox-boot-starter</artifactId>-->
+        <!--            <version>3.0.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.swagger.core.v3</groupId>-->
+        <!--            <artifactId>swagger-annotations</artifactId>-->
+        <!--            <version>2.0.0</version>-->
+        <!--        </dependency>-->
     </dependencies>
     <build>
         <plugins>
@@ -106,54 +108,90 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>io.swagger</groupId>
-                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>2.2.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>
-<!--                                ${bali.home}/bali_1.0.0.yaml-->
-                                ${bali.home}/openapi.yaml
-                            </inputSpec>
-                            <language>spring</language>
-                            <apiPackage>com.baeldung.openapi.api</apiPackage>
-                            <modelPackage>com.baeldung.openapi.model</modelPackage>
-                            <supportingFilesToGenerate>
-                                ApiUtil.java
-                            </supportingFilesToGenerate>
-                            <configOptions>
-                                <delegatePattern>true</delegatePattern>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>io.swagger</groupId>-->
+            <!--                <artifactId>swagger-codegen-maven-plugin</artifactId>-->
+            <!--                <version>2.2.3</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <inputSpec>-->
+            <!--&lt;!&ndash;                                ${bali.home}/bali_1.0.0.yaml&ndash;&gt;-->
+            <!--&lt;!&ndash;                                ${bali.home}/openapi.yaml&ndash;&gt;-->
+            <!--                                ${bali.root}/bali_1.0.0.yaml-->
+            <!--                            </inputSpec>-->
+            <!--                            <language>spring</language>-->
+            <!--                            <apiPackage>com.baeldung.openapi.api</apiPackage>-->
+            <!--                            <modelPackage>com.baeldung.openapi.model</modelPackage>-->
+            <!--                            <supportingFilesToGenerate>-->
+            <!--                                ApiUtil.java-->
+            <!--                            </supportingFilesToGenerate>-->
+            <!--                            <configOptions>-->
+            <!--                                <delegatePattern>true</delegatePattern>-->
+            <!--                            </configOptions>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.openapitools</groupId>-->
+            <!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
+            <!--                <version>5.0.1</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>bali_contract</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--&lt;!&ndash;                            <inputSpec>${bali.home}/bali_1.0.0.yaml</inputSpec>&ndash;&gt;-->
+            <!--&lt;!&ndash;                            <inputSpec>${bali.home}/openapi.yaml</inputSpec>&ndash;&gt;-->
+            <!--                            <inputSpec>${bali.root}/bali_1.0.0.yaml</inputSpec>-->
+            <!--                            <generatorName>spring</generatorName>-->
+            <!--                            <generateApis>false</generateApis>-->
+            <!--                            <generateModelDocumentation>false</generateModelDocumentation>-->
+            <!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
+            <!--                            <configOptions>-->
+            <!--                                <hateoas>true</hateoas>-->
+            <!--                                <sourceFolder>src/gen/java/main</sourceFolder>-->
+            <!--                                <dateLibrary>java14</dateLibrary>-->
+            <!--                                <modelPackage>be.abvvfgtb.bali.domain</modelPackage>-->
+            <!--                            </configOptions>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <version>5.0.1</version>
                 <executions>
                     <execution>
-                        <id>bali_contract</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-<!--                            <inputSpec>${bali.home}/bali_1.0.0.yaml</inputSpec>-->
-                            <inputSpec>${bali.home}/openapi.yaml</inputSpec>
+                            <inputSpec>${bali.root}/bali_1.0.0.yaml</inputSpec>
                             <generatorName>spring</generatorName>
+                            <library>spring-boot</library>
+                            <modelNameSuffix>Dto</modelNameSuffix>
                             <generateApis>false</generateApis>
-                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <generateApiDocumentation>false</generateApiDocumentation>
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <configOptions>
-                                <hateoas>true</hateoas>
-                                <sourceFolder>src/gen/java/main</sourceFolder>
+                                <basePackage>com.baitando.openapi.samples.gen.springbootserver</basePackage>
+                                <modelPackage>com.baitando.openapi.samples.gen.springbootserver.model</modelPackage>
+                                <apiPackage>com.baitando.openapi.samples.gen.springbootserver.api</apiPackage>
+                                <configPackage>com.baitando.openapi.samples.gen.springbootserver.config</configPackage>
                                 <dateLibrary>java14</dateLibrary>
+                                <delegatePattern>true</delegatePattern>
+                                <interfaceOnly>true</interfaceOnly>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
                                 <modelPackage>be.abvvfgtb.bali.domain</modelPackage>
                             </configOptions>
                         </configuration>
