@@ -11,10 +11,10 @@
         <relativePath/>
     </parent>
     <groupId>be.abvvfgtb.bali</groupId>
-    <artifactId>bali-member-facade-server</artifactId>
+    <artifactId>bali-member-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>01- Member Facade</name>
-    <description>ABVV / FGTB Bali Member Facade Server</description>
+    <name>02- Member</name>
+    <description>ABVV / FGTB Bali Member Server</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,13 +56,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>be.abvvfgtb.bali</groupId>
-            <artifactId>bali-member-server</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${bali.root}/bali-member-server/target/bali-member-server-0.0.1-SNAPSHOT.jar</systemPath>
         </dependency>
     </dependencies>
     <build>

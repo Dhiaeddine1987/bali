@@ -11,7 +11,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>14</java.version>
-		<janus.root>${basedir}</janus.root>
+		<bali.root>${basedir}</bali.root>
 	</properties>
 
 	<repositories>
@@ -31,6 +31,7 @@
 
 	<modules>
 		<module>bali-member-facade-server</module>
+		<module>bali-member-server</module>
 	</modules>
 </project>
 <!--    <modules>-->
