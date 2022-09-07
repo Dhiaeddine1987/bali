@@ -1,4 +1,4 @@
-package bali.member.server.services;
+package be.abvvfgtb.bali.member.server.services;
 
 import org.springframework.stereotype.Service;
 

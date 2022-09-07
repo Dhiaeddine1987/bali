@@ -19,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
-@SpringBootApplication
 @RequestMapping("/v1")
 @RestController
 public class MemberController {

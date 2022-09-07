@@ -1,8 +1,9 @@
-package bali.member.server;
+package be.abvvfgtb.bali.member.server;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
+//@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @SpringBootApplication
 public class Application {
 

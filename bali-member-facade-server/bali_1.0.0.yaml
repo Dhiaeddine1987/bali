@@ -1,0 +1,55 @@
+#swagger: "2.0"
+#info:
+#  title: Bali APIs
+#  description: APIs available for Bali
+#  version: 1.0.0
+#servers:
+#  - url: http://localhost:8080/bali/services
+#    description: local
+#  - url: http://localhost:8080/bali/services
+#    description: springboot
+#tags:
+#  - name: Bali APIs
+#    description: APIs available for Bali
+#paths:
+#  /Bali:
+#    get:
+#      operationId: "getMember"
+#      tags:
+#        - Bali APIs
+#      parameters:
+#        - name: firstName
+#          in: query
+#          required: true
+#          schema:
+#            maxLength: 15
+#            type: string
+#      responses:
+#        201:
+#          description: Successful operation! Message printed
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '#/components/schemas/BaliResult'
+##  /Bali:
+##    get:
+##      operationId: "getMember"
+##      responses:
+##        200:
+##          description: OK
+##          schema:
+##            $ref: "#/definitions/BaliResult"
+#components:
+#  schemas:
+##definitions:
+#  MessageResponse:
+#    type: object
+#    properties:
+#      message:
+#        maxLength: 20
+#        type: string
+#  BaliResult:
+#    type: object
+#    properties:
+#      MessageResponse:
+#        $ref: '#/components/schemas/MessageResponse'
