@@ -1,42 +1,42 @@
 openapi: 3.0.1
 info:
-  title: mimacom Banking API
-  description: This is a sample API used to illustrate the tooling around an API-first approach.
+  title: Bali Member API
+  description: This is API used to manage Member microservices
   version: 1.0.0
   x-audience: external-public
   x-api-id: 78e624f8-f73e-4bbe-a918-bda261fd13ec
-  contact:
-    name: Andreas Hirsch
-    url: https://www.mimacom.com
-    email: andreas.hirsch@mimacom.com
 servers:
-  - url: 'http://localhost:8080'
+  - url: 'http://localhost:8080/bali/services/v1'
     description: dev
 paths:
-  /accounts:
+  /member:
     get:
-      summary: Retrieve all accounts.
-      operationId: getAccounts
+      summary: Retrieve all members.
+      operationId: getMember
+      parameters:
+        - name: firstName
+          in: query
+          required: true
+          schema:
+            maxLength: 15
+            type: string
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetAccountsResponse'
+                $ref: '#/components/schemas/BaliResult'
 components:
   schemas:
-    Account:
+    MessageResponse:
       type: object
-      required:
-        - iban
       properties:
-        iban:
+        message:
+          maxLength: 20
           type: string
-    GetAccountsResponse:
+    BaliResult:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
+        MessageResponse:
+          $ref: '#/components/schemas/MessageResponse'
