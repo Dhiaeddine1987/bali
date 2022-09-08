@@ -6,12 +6,12 @@ info:
   x-audience: external-public
   x-api-id: 78e624f8-f73e-4bbe-a918-bda261fd13ec
 servers:
-  - url: 'http://localhost:8080/bali/services/v1'
+  - url: http://localhost:8080/bali/services/v1
     description: dev
 paths:
-  /member:
+  /memberFacade:
     get:
-      summary: Retrieve all members.
+      summary: Retrieve all members
       operationId: getMember
       parameters:
         - name: firstName
