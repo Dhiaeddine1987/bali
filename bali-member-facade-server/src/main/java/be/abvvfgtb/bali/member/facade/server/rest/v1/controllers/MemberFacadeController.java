@@ -27,15 +27,18 @@ public class MemberFacadeController implements IMemberFacadeController {
     }
 
     @GetMapping("/memberFacade")
-    public ResponseEntity<BaliResultDto> getMember(@RequestParam(value = "name", defaultValue = "World") String name, HttpServletRequest request) {
+    public ResponseEntity<BaliResultDto> getMember(@RequestParam(value = "firstName", defaultValue = "firstName") String firstName,
+                                                   @RequestParam(value = "lastName", defaultValue = "lastName") String lastName,
+                                                   HttpServletRequest request) {
         HttpHeaders headers = IMemberFacadeController.createHeaders("admin", "admin");
-        headers.set("name", name);
+        headers.set("firstName", firstName);
+        headers.set("lastName", lastName);
 
         String body = restTemplate().exchange(memberUrl, HttpMethod.GET, new HttpEntity<>(headers), String.class).getBody();
 
         return ResponseEntity.ok(new BaliResultDto()
                 .messageResponse(new MessageResponseDto()
-                        .message(String.format("Hello %s from Member Facade Server: '%s'", name, body))));
+                        .message(String.format("Hello %s %s from Member Facade Server: '%s'", firstName, lastName, body))));
 
     }
 

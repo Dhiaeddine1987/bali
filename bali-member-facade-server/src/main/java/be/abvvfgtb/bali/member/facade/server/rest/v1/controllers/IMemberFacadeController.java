@@ -11,7 +11,8 @@ import java.nio.charset.Charset;
 
 public interface IMemberFacadeController {
 
-    ResponseEntity<BaliResultDto> getMember(@RequestParam(value = "name", defaultValue = "World") String name, HttpServletRequest request);
+    ResponseEntity<BaliResultDto> getMember(@RequestParam(value = "firstName") String firstName,
+    @RequestParam(value = "lastName") String lastName, HttpServletRequest request);
 
     static HttpHeaders createHeaders(String username, String password) {
         return new HttpHeaders() {{

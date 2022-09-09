@@ -11,8 +11,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.filter.ForwardedHeaderFilter;
 
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
-//@SpringBootApplication
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {

@@ -10,12 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/*
+   Retrieves FZZ Informations
+ */
 @Service
 @Repository
 @Transactional
-/*
-   Retrieves Fus Informations
- */
 public interface BaliFZZDAO extends JpaRepository<BaliFZZ, String> {
 
   @Query("select c from BaliFZZ c where trim(upper(c.firstName)) = trim(upper(:firstName)) and trim(upper(c.lastName)) = trim(upper(:lastName))")
