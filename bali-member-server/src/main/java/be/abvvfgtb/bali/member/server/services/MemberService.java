@@ -1,9 +1,7 @@
 package be.abvvfgtb.bali.member.server.services;
 
 import be.abvvfgtb.bali.member.server.database.Db2MultiTenantResolver;
-import be.abvvfgtb.bali.member.server.database.db2.dao.BaliFUSDAO;
 import be.abvvfgtb.bali.member.server.database.db2.dao.BaliFZZDAO;
-import be.abvvfgtb.bali.member.server.database.db2.domain.BaliFUS;
 import be.abvvfgtb.bali.member.server.database.db2.domain.BaliFZZ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -12,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * DB2 Service Implementation.
@@ -39,7 +36,7 @@ public class MemberService implements IMemberService, Db2Service{
     @Autowired
     public MemberService(Environment env) {
         this.env = env;
-        this.schemaPrefix = env.getProperty(Db2Service.SCHEMA_NAME_KEY,
+        this.schemaPrefix = env.getProperty(SCHEMA_NAME_KEY,
                 String.class,
                 Db2MultiTenantResolver.DEFAULT_SCHEMA_PREFIX);
         this.nationalSchemaPrefix = env.getProperty("spring.db2.national.datasource.default_schema_name",

@@ -1,4 +1,4 @@
-package be.abvvfgtb.bali.member.server.interceptor;
+package be.abvvfgtb.bali.member.facade.server.interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

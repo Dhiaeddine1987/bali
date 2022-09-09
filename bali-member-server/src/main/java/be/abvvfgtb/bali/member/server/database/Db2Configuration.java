@@ -30,7 +30,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "db2EntityManagerFactory",
                        transactionManagerRef = "db2TransactionManager",
-                       basePackages = {"be.abvvfgtb.bali.member.server.database.db2.dao"})
+                       basePackages = {"be.abvvfgtb.bali.member.facade.server.database.db2.dao"})
 public class Db2Configuration {
   @Autowired
   private Environment env;
@@ -92,7 +92,7 @@ public class Db2Configuration {
         = new LocalContainerEntityManagerFactoryBean();
     em.setDataSource(dataSource);
     em.setPackagesToScan(
-        new String[] { "be.abvvfgtb.bali.member.server.database.db2.domain" });
+        new String[] { "be.abvvfgtb.bali.member.facade.server.database.db2.domain" });
 
     HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
     em.setJpaVendorAdapter(vendorAdapter);

@@ -1,4 +1,4 @@
-package be.abvvfgtb.bali.member.server.interceptor;
+package be.abvvfgtb.bali.member.facade.server.interceptor;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

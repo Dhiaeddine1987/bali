@@ -1,4 +1,4 @@
-package be.abvvfgtb.bali.member.server.rest.v1.controllers;
+package be.abvvfgtb.bali.member.facade.server.rest.v1.controllers;
 
 import be.abvvfgtb.bali.domain.BaliResultDto;
 import org.apache.tomcat.util.codec.binary.Base64;

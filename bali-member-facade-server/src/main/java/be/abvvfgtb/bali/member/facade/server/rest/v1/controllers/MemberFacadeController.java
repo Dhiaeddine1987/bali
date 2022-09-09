@@ -1,4 +1,4 @@
-package be.abvvfgtb.bali.member.server.rest.v1.controllers;
+package be.abvvfgtb.bali.member.facade.server.rest.v1.controllers;
 
 
 import be.abvvfgtb.bali.domain.BaliResultDto;
@@ -6,8 +6,6 @@ import be.abvvfgtb.bali.domain.MessageResponseDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 
 @RequestMapping("/v1")
 @RestController

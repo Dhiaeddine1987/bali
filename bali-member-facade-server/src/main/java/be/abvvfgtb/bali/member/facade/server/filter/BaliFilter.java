@@ -1,4 +1,4 @@
-package be.abvvfgtb.bali.member.server.filter;
+package be.abvvfgtb.bali.member.facade.server.filter;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

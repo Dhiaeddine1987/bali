@@ -32,5 +32,5 @@
 	<modules>
 		<module>bali-member-facade-server</module>
 		<module>bali-member-server</module>
-	</modules>
+    </modules>
 </project>
