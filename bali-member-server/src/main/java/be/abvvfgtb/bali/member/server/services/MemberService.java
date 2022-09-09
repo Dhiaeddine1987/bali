@@ -1,12 +1,66 @@
 package be.abvvfgtb.bali.member.server.services;
 
+import be.abvvfgtb.bali.member.server.database.Db2MultiTenantResolver;
+import be.abvvfgtb.bali.member.server.database.db2.dao.BaliFUSDAO;
+import be.abvvfgtb.bali.member.server.database.db2.dao.BaliFZZDAO;
+import be.abvvfgtb.bali.member.server.database.db2.domain.BaliFUS;
+import be.abvvfgtb.bali.member.server.database.db2.domain.BaliFZZ;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
+/**
+ * DB2 Service Implementation.
+ */
 @Service
-public class MemberService implements IMemberService{
+@Profile({"local", "!xxlocal"})
+public class MemberService implements IMemberService, Db2Service{
 
-    public String getMember(String firstName) {
-        return firstName;
+    @Autowired
+    private Environment env;
+
+    private String schemaPrefix;
+    private String nationalSchemaPrefix;
+    private boolean isProdEnv = false;
+
+    @Autowired
+    BaliFZZDAO baliFzz;
+
+    /**
+     * DB2 Service Implementation constructor.
+     *
+     * @param env environment file
+     */
+    @Autowired
+    public MemberService(Environment env) {
+        this.env = env;
+        this.schemaPrefix = env.getProperty(Db2Service.SCHEMA_NAME_KEY,
+                String.class,
+                Db2MultiTenantResolver.DEFAULT_SCHEMA_PREFIX);
+        this.nationalSchemaPrefix = env.getProperty("spring.db2.national.datasource.default_schema_name",
+                String.class);
+
+
+        this.isProdEnv = Arrays.asList(this.env.getActiveProfiles()).contains("prod");
     }
+
+    public String getMember(String firstName, String lastName) {
+        Db2MultiTenantResolver.setTenant(
+                this.schemaPrefix
+                        + Db2MultiTenantResolver.DEFAULT_TENANT_IDENTIFIER);
+
+        List<BaliFZZ> baliFUSOptional = baliFzz.findGsmByFirstNameAndLastName(firstName, lastName);
+        if(!baliFUSOptional.isEmpty()) {
+            BaliFZZ baliFzz = baliFUSOptional.get(0);
+            if(baliFzz.getGsmNumber() != null /* || !baliFzz.getGsmNumber().toString().isBlank()=""*/)
+            return baliFzz.getGsmNumber();
+        }
+        return "Nothing found";
+    }
+
 }

@@ -25,7 +25,6 @@
         <spring.profiles.active>local</spring.profiles.active>
         <spring-cloud.version>2020.0.0</spring-cloud.version>
         <bali.root>${basedir}/..</bali.root>
-        <bali.home>${basedir}</bali.home>
     </properties>
 
     <dependencies>
