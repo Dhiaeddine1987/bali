@@ -20,6 +20,12 @@ paths:
           schema:
             maxLength: 15
             type: string
+        - name: lastName
+          in: query
+          required: true
+          schema:
+            maxLength: 15
+            type: string
       responses:
         '200':
           description: OK

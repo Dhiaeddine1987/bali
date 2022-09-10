@@ -17,7 +17,8 @@ public class MemberController implements IMemberController {
 
     @GetMapping("/member")
     public String getMember(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName, HttpServletRequest request) {
-    //    return String.format("Hi %s from Member Server!", request.getHeader("firstName") + memberService.getMember(firstName, lastName));
-        return String.format("Hi %s %s from Member Server! Your phone number is: %s",  request.getHeader("firstName"), request.getHeader("lastName"),  memberService.getMember(firstName, lastName));
+//        String firstName = request.getHeader("firstName");
+//        String lastName = request.getHeader("lastName");
+        return String.format("Hi %s %s from Member Server! Your phone number is: %s", firstName, lastName, memberService.getMember(firstName, lastName));
     }
 }

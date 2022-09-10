@@ -3,6 +3,7 @@ package be.abvvfgtb.bali.member.server.services;
 import be.abvvfgtb.bali.member.server.database.Db2MultiTenantResolver;
 import be.abvvfgtb.bali.member.server.database.db2.dao.BaliFZZDAO;
 import be.abvvfgtb.bali.member.server.database.db2.domain.BaliFZZ;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
@@ -54,10 +55,10 @@ public class MemberService implements IMemberService, Db2Service{
         List<BaliFZZ> baliFUSOptional = baliFzz.findGsmByFirstNameAndLastName(firstName, lastName);
         if(!baliFUSOptional.isEmpty()) {
             BaliFZZ baliFzz = baliFUSOptional.get(0);
-            if(baliFzz.getGsmNumber() != null /* || !baliFzz.getGsmNumber().toString().isBlank()=""*/)
+            if(!StringUtils.isBlank(baliFzz.getGsmNumber()))
             return baliFzz.getGsmNumber();
         }
-        return "Nothing found";
+        return "No Gsm Number Found!";
     }
 
 }

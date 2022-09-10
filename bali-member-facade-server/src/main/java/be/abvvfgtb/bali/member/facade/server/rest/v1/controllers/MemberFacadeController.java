@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,18 +29,29 @@ public class MemberFacadeController implements IMemberFacadeController {
     }
 
     @GetMapping("/memberFacade")
-    public ResponseEntity<BaliResultDto> getMember(@RequestParam(value = "firstName", defaultValue = "firstName") String firstName,
-                                                   @RequestParam(value = "lastName", defaultValue = "lastName") String lastName,
+    public ResponseEntity<BaliResultDto> getMember(@RequestParam(value = "firstName") String firstName,
+                                                   @RequestParam(value = "lastName") String lastName,
                                                    HttpServletRequest request) {
         HttpHeaders headers = IMemberFacadeController.createHeaders("admin", "admin");
         headers.set("firstName", firstName);
         headers.set("lastName", lastName);
 
-        String body = restTemplate().exchange(memberUrl, HttpMethod.GET, new HttpEntity<>(headers), String.class).getBody();
+        UriComponents builder = UriComponentsBuilder.fromHttpUrl(memberUrl)
+                .queryParam("firstName",firstName)
+                .queryParam("lastName",lastName)
+                .build();
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(null, headers);
+
+        ResponseEntity<String> body = restTemplate().exchange(builder.toUriString(),
+                HttpMethod.GET,
+                requestEntity,
+                String.class);
+
 
         return ResponseEntity.ok(new BaliResultDto()
                 .messageResponse(new MessageResponseDto()
-                        .message(String.format("Hello %s %s from Member Facade Server: '%s'", firstName, lastName, body))));
+                        .message(String.format("Hello %s %s from Member Facade Server: '%s'", firstName, lastName, body.getBody()))));
 
     }
 
